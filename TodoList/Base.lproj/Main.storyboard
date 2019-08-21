@@ -389,8 +389,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Add Task"/>
                                         <connections>
-                                            <action selector="addNewTaskClick:" destination="haL-5d-Reb" eventType="touchUpInside" id="ddx-bM-eNT"/>
-                                            <action selector="btnNewTaskClick:" destination="haL-5d-Reb" eventType="touchUpInside" id="FC0-n8-eJW"/>
+                                            <action selector="addNewTaskClick:" destination="haL-5d-Reb" eventType="touchUpInside" id="x9q-zG-KTE"/>
                                         </connections>
                                     </button>
                                 </subviews>
