@@ -39,6 +39,7 @@ class UserRepository {
             switch result {
             case .success(let user):
                 self.saveToken(token: user.token)
+                self.saveUserId(userId: user.id)
                 print(user)
                 callback(true)
             case .failure(let error):
@@ -69,6 +70,14 @@ class UserRepository {
     
     func getToken() -> String? {
         return UserDefaults.standard.string(forKey: "token")
+    }
+    
+    private func saveUserId(userId: String) {
+        UserDefaults.standard.set(userId, forKey: "userId")
+    }
+    
+    func getUserId() -> String? {
+        return UserDefaults.standard.string(forKey: "userId")
     }
     
     static func factory() -> UserRepository {

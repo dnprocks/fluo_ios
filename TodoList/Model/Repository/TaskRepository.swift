@@ -25,7 +25,7 @@ class TaskRepository {
             taskApi.getTaskByProject(idProject: idProject, token: token){(result) in
                 switch result {
                 case .success(let tasks):
-                    callback(tasks, false)
+                    callback(tasks, true)
                 case .failure( _):
                     callback(nil, false)
                 }
@@ -36,7 +36,7 @@ class TaskRepository {
     }
     
     
-    func addNewTask(task: TaskResponse,completion: @escaping (Bool) -> Void) {
+    func addNewTask(task: TaskResponse, completion: @escaping (Bool) -> Void) {
         if let token = userRepository.getToken(){
             taskApi.addNewTask(task: task, token: token){(result) in
                 switch result {
@@ -48,6 +48,22 @@ class TaskRepository {
                 }
             }
         }
+    }
+    
+    func getTasks(callback:@escaping(Array<TaskResponse>?, Bool) -> Void) {
+        
+        if let token = userRepository.getToken(){
+            taskApi.getTasks(token: token){(result) in
+                switch result {
+                case .success(let tasks):
+                    callback(tasks, false)
+                case .failure( _):
+                    callback(nil, false)
+                }
+            }
+            
+        }
+        
     }
         
     static func factory() -> TaskRepository{

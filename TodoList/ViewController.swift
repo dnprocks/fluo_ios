@@ -9,10 +9,39 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private let userRepository = UserRepository.factory()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let repository = UserRepository.factory()
-//        repository.login(email: "danielnpimentel@gmail.com", password: "dnprocks", )
+        
+//        if userRepository.getToken() != nil {
+//
+////            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "tabBar"){
+////                self.present(viewController, animated: true, completion: nil)
+////            }
+//
+//            if let tabBarViewController = self.storyboard?.instantiateViewController(withIdentifier: "Home") {
+//                self.present(tabBarViewController, animated: true, completion: nil)
+//            }
+//
+//        }
+        
+    
+        userRepository.login(email: "danielnpimentel@gmail.com", password: "dnprocks"){
+            (result) in
+
+            if(result) {
+                //                    self.dismiss(animated: true, completion: nil)
+                if let tabBarViewController = self.storyboard?.instantiateViewController(withIdentifier: "Home") {
+                    self.present(tabBarViewController, animated: true, completion: nil)
+                }
+
+            }else{
+                print("error")
+            }
+
+        }
     }
 }
 
